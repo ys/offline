@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title><%= current_page.data.title || "Offline & Analog" %></title>
+    <%= stylesheet_link_tag "styles" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body class="leading-relaxed font-mono my-8 container mx-auto max-w-xl">
+    <% unless current_page.data.notitle %>
+      <h1 class="font-bold font-mono text-center color-gray-900 text-xl">
+        Offline & Analog
+      </h1>
+      <nav class="flex flex-row center justify-around">
+        <a class="underline mx-2" href="/">All rolls</a>
+        <a class="underline mx-2" href="/cameras">📷 cameras</a>
+        <a class="underline mx-2" href="/films">🎞 films</a>
+      </nav>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

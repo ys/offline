@@ -1,0 +1,9 @@
+
+<% Analog::Camera.all.sort_by { |a| a.to_s }.each do |camera| %>
+  <h2 class="my-4 font-bold font-mono text-lg"><%= camera.to_s %></h2>
+  <ul>
+ <% camera.rolls.sort_by(&:roll_number).reverse.each do |roll| %>
+   <li class=""><span class="ml-1 mr-2">→</span><a class="underline" href="/<%=roll.roll_number %>"><%=roll.roll_number %> - <%= roll.camera %> - <%= roll.film %></a></li>
+ <% end %>
+  </ul>
+<% end %>

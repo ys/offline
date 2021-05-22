@@ -1,0 +1,9 @@
+
+<% Analog::Roll.all.group_by { |r| r.scanned_at.year }.to_a.sort_by { |a| -a[0] }.each do |year, rolls| %>
+  <h2 class="my-4 font-bold font-mono text-lg"><%= year %></h2>
+  <ul>
+ <% rolls.sort_by(&:roll_number).reverse.each do |roll| %>
+   <li class=""><span class="ml-1 mr-2">→</span><a class="underline" href="/<%=roll.roll_number %>"><%=roll.roll_number %> - <%= roll.camera %> - <%= roll.film %></a></li>
+ <% end %>
+  </ul>
+<% end %>
