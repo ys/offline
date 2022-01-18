@@ -1,9 +1,9 @@
 
-<% Analog::Roll.all.group_by { |r| r.scanned_at.year }.to_a.sort_by { |a| -a[0] }.each do |year, rolls| %>
-  <h2 class="my-4 font-bold font-mono text-lg"><%= year %></h2>
-  <ul>
+<% Analog::Roll.all.group_by { |r| (r.shot_at || r.scanned_at).year }.to_a.sort_by { |a| -a[0] }.each do |year, rolls| %>
+  <h2 class="my-4 font-black font-mono text-lg"><%= year %></h2>
+  <ul class="mb-8">
  <% rolls.sort_by(&:roll_number).reverse.each do |roll| %>
-   <li class=""><span class="ml-1 mr-2">→</span><a class="underline" href="/<%=roll.roll_number %>"><%=roll.roll_number %> - <%= roll.camera %> - <%= roll.film %></a></li>
+   <li class=""><a class="underline" href="/<%=roll.roll_number %>"><%=roll.roll_number %></a> → <span class="text-xs"><%= roll.camera %> • <%= roll.film %></span> </li>
  <% end %>
   </ul>
 <% end %>

@@ -1,10 +1,5 @@
 module.exports = {
   mode: 'jit',
-    purge: ["source/**/*.erb"],
-    darkMode: false, // or 'media' or 'class'
-    theme: {
-          extend: {},
-        },
-    variants: {},
-    plugins: [],
+  purge: ["source/**/*.erb"],
+  darkMode: false
 }

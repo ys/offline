@@ -1,10 +1,10 @@
 
 
-<% Analog::Film.all.sort_by { |a| a.to_s }.each do |film| %>
-  <h2 class="my-4 font-bold font-mono text-lg"><%= film.to_s %></h2>
-  <ul>
+<% Analog::Film.all.sort_by { |a| - a.rolls.count }.each do |film| %>
+  <h2 class="my-4 font-black font-mono text-lg"><%= film.to_s %></h2>
+  <ul class="mb-8">
  <% film.rolls.sort_by(&:roll_number).reverse.each do |roll| %>
-   <li class=""><span class="ml-1 mr-2">→</span><a class="underline" href="/<%=roll.roll_number %>"><%=roll.roll_number %> - <%= roll.camera %> - <%= roll.film %></a></li>
+   <li class=""><a class="underline" href="/<%=roll.roll_number %>"><%=roll.roll_number %></a> → <span class="text-xs"><%= roll.camera %></span></li>
  <% end %>
   </ul>
 <% end %>

@@ -2,20 +2,14 @@
 notitle: true
 ---
 		<section class="flex flex-col py-4" id="roll_<%= roll_number %>">
-      <header>
-        <a href="/" class="text-2xl -ml-7"  >←</a>
-        <span class="roll_number" >#<%= roll_number %> - <%= scanned_at %></span>
-        <h1 class="mt-4 text-xl font-bold ">📷 <%= camera %> - <%=film %></h1>
+      <header class="my-6 text-center">
+        <span class="text-xs"><a class="print:hidden" href="/">←</a> <%= shot_at || scanned_at %></span>
+        <h1 class="my-2 text-lg font-black"><%= roll_number %></h1>
+        <h2 class="text-sm"><%= camera %> • <%=film %></h2>
       </header>
-      <dl class="my-4 lists">
-        <dt class="font-bold">Tags</dt>
-        <dd><%= tags.join(", ") %></dd>
-        <dt class="font-bold">Places</dt>
-        <dd><%= places.join(", ") %></dd>
-      </dl>
-			<div class="grid grid-cols-3 gap-4 -mx-32">
+			<div class="columns-3 print:columns-3 gap-1 -mx-32">
         <% files.each do |file| %>
-					<%= image_tag(thumb_path(File.join(dir, file)), class: "w-full") %>
+          <%= image_tag(thumb_path(File.join(directory, file)), class: "break-inside p-1 first:mt-0 my-2 w-full") %>
         <% end %>
 			</div>
 		</section>

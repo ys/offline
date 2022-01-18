@@ -12,13 +12,13 @@
   </head>
   <body class="leading-relaxed font-mono my-8 container mx-auto max-w-xl">
     <% unless current_page.data.notitle %>
-      <h1 class="font-bold font-mono text-center color-gray-900 text-xl">
-        Offline & Analog
+      <h1 class="font-black uppercase font-mono color-gray-900 text-3xl">
+        Offline
       </h1>
-      <nav class="flex flex-row center justify-around">
-        <a class="underline mx-2" href="/">All rolls</a>
-        <a class="underline mx-2" href="/cameras">📷 cameras</a>
-        <a class="underline mx-2" href="/films">🎞 films</a>
+      <nav class="my-8 text-sm">
+        <li><a class="underline mx-2" href="/">By year</a></li>
+        <li><a class="underline mx-2" href="/cameras">By camera</a></li>
+        <li><a class="underline mx-2" href="/films">By film</a></li>
       </nav>
     <% end %>
     <%= yield %>
