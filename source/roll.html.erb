@@ -9,7 +9,9 @@ notitle: true
       </header>
 			<div class="columns-3 print:columns-5 break-inside gap-1 -mx-32 print:mx-0">
         <% files.each do |file| %>
-          <%= image_tag(thumb_path(File.join(directory, file)), class: "print:break-inside-avoid-page break-inside p-1 first:mt-0 my-2 w-full") %>
+          <% img = asset(File.join(directory, file)) %>
+          <% rotate = img.height > img.width ? "rotate-90" : "rotate-0" %>
+          <%= image_tag(img.file, class: "print:break-inside-avoid-page #{rotate} break-inside p-1 first:mt-0 my-2 w-full") %>
         <% end %>
 			</div>
 		</section>

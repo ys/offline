@@ -153,6 +153,7 @@ PLATFORMS
 
 DEPENDENCIES
   analog!
+  dimensions
   middleman (~> 4.4)
   middleman-autoprefixer (~> 3.0)
   middleman-livereload

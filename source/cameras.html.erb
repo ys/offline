@@ -1,5 +1,4 @@
-
-<% Analog::Camera.all.sort_by { |a| - a.rolls.count }.each do |camera| %>
+<% cameras.sort_by { |a| - a.rolls.count }.each do |camera| %>
   <h2 class="my-4 font-black font-mono text-lg"><%= camera.to_s %></h2>
   <ul class="mb-8">
  <% camera.rolls.sort_by(&:roll_number).reverse.each do |roll| %>

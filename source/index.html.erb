@@ -1,5 +1,5 @@
 
-<% Analog::Roll.all.group_by { |r| (r.shot_at || r.scanned_at).year }.to_a.sort_by { |a| -a[0] }.each do |year, rolls| %>
+<% rolls.group_by { |r| (r.shot_at || r.scanned_at).year }.to_a.sort_by { |a| -a[0] }.each do |year, rolls| %>
   <h2 class="my-4 font-black font-mono text-lg"><%= year %></h2>
   <ul class="mb-8">
  <% rolls.sort_by(&:roll_number).reverse.each do |roll| %>

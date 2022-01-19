@@ -1,6 +1,4 @@
-
-
-<% Analog::Film.all.sort_by { |a| - a.rolls.count }.each do |film| %>
+<% films.sort_by { |a| - a.rolls.count }.each do |film| %>
   <h2 class="my-4 font-black font-mono text-lg"><%= film.to_s %></h2>
   <ul class="mb-8">
  <% film.rolls.sort_by(&:roll_number).reverse.each do |roll| %>

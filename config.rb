@@ -25,17 +25,20 @@ activate :external_pipeline,
 # Layouts
 # https://middlemanapp.com/basics/layouts/
 
-page '/'
-page '/films'
-page '/cameras'
-
 Analog::Config.load
-Analog::Roll.each do |roll|
+@all_rolls ||= Analog::Roll.all
+@all_films ||= Analog::Film.all
+@all_cameras ||= Analog::Camera.all
+page '/', :locals => { rolls: @all_rolls }
+page '/films', :locals => { all_films: @all_films }
+page '/cameras', :locals => { all_cameras: @all_cameras }
+
+@all_rolls.each do |roll|
   proxy "/#{roll.roll_number}", "/roll.html", :locals => roll.to_h, layout: "layout"
 end
 
 unless File.exist?("source/.generated")
-  Analog::Roll.each do |roll|
+  @all_rolls.each do |roll|
     CLI::UI::StdoutRouter.enable
     spin_group = CLI::UI::SpinGroup.new
     spin_group.add(roll.roll_number) do
@@ -63,5 +66,11 @@ helpers do
   def thumb_path(path)
     path.sub(Analog::Config.path + "/" , "")
   end
+
+  def asset(file)
+    width, height = Dimensions.dimensions(File.join('source/images', thumb_path(file)))
+    OpenStruct.new(file: thumb_path(file), width: width, height: height, ratio: width.to_f / height.to_f)
+  end
+
 end
 
