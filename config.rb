@@ -3,13 +3,18 @@
 
 require "mini_magick"
 
+configure :development do
+  activate :livereload
+end
+
+ignore ".git"
+
 activate :directory_indexes
 
 activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
 
-activate :livereload
 
 activate :external_pipeline,
   name: :webpack,
@@ -29,7 +34,7 @@ Analog::Roll.each do |roll|
   proxy "/#{roll.roll_number}", "/roll.html", :locals => roll.to_h, layout: "layout"
 end
 
-unless File.exist?("source/.cached")
+unless File.exist?("source/.generated")
   Analog::Roll.each do |roll|
     CLI::UI::StdoutRouter.enable
     spin_group = CLI::UI::SpinGroup.new

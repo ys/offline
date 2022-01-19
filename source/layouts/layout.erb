@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "styles" %>
     <%= javascript_include_tag "application" %>
   </head>
-  <body class="leading-relaxed font-mono my-8 container mx-auto max-w-xl">
+  <body class="leading-relaxed font-mono my-8 container mx-auto max-w-xl print:max-w-full print:my-0">
     <% unless current_page.data.notitle %>
       <h1 class="font-black uppercase font-mono color-gray-900 text-3xl">
         Offline

@@ -1,6 +1,7 @@
+.tmp
 .bundle
 .cache
 .DS_Store
 .sass-cache
 build/
-source/images/scans
+source/

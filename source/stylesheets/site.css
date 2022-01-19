@@ -3,6 +3,10 @@
 @import "tailwindcss/utilities";
 
 
+img {
+  page-break-inside: avoid;
+}
+
 a {
   color: rgba(#000, 0.7);
 
